@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./styles.css";
-import LoadingButton from "../../utils/Button/LoadingButton";
-import FormAlert from "../../utils/Alert/FormAlert";
+import LoadingButton from "../../components/Button/LoadingButton";
+import FormAlert from "../../components/Alert/FormAlert";
 import { login } from "../../api/api";
 
 const Login = () => {

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import LoadingButton from "../../utils/Button/LoadingButton";
-import FormAlert from "../../utils/Alert/FormAlert";
+import LoadingButton from "../../components/Button/LoadingButton";
 import { registerUser } from "../../api/api";
 import './styles.css'
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import success from "../../utils/AlerBox";
+import {success} from "../../components/AlerBox";
+import FormAlert from "../../components/Alert/FormAlert";
 
 const Register = () => {
 

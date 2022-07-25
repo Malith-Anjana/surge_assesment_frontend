@@ -33,3 +33,40 @@ export async function login(body) {
       data: body
     });
   }
+
+  export async function addNote(body) {
+    const token = getToken();
+    return axios({
+      url:BASE_URL + `/api/note`, 
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      data: body
+    });
+  }
+
+  export async function getNotes() {
+    const token = getToken();
+    return axios({
+      url:BASE_URL + `/api/note`, 
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  }
+
+  export async function deleteNote(id) {
+    const token = getToken();
+    return axios({
+      url:BASE_URL + `/api/note/${id}`, 
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  }
