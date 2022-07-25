@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import axios from "axios";
 import "./styles.css";
-import LoadingButton from "../../utils/LoadingButton";
+import LoadingButton from "../../utils/Button/LoadingButton";
 import FormAlert from "../../utils/Alert/FormAlert";
+import { login } from "../../api/api";
 
 const Login = () => {
   const [data, setData] = useState({ email: "", password: "" });
@@ -19,12 +19,10 @@ const Login = () => {
     setloading(true)
     e.preventDefault();
     try {
-      const url = "http://localhost:5000/api/auth";
-      const res = await axios.post(url, data);
+      const res = await login(data);
 
       localStorage.setItem("token", res.data.accessToken);
-      localStorage.setItem("role", res.data.accountType);
-      console.log(res);
+
       setloading(false)
 
       window.location = "/";
