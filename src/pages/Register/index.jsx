@@ -38,7 +38,8 @@ const Register = () => {
       await registerUser(data);
       success("Successfully Registered");
       setloading(false);
-      window.location = "/";
+      localStorage.removeItem('token');
+      window.location = "/login";
     }catch(error){
       setloading(false)
           if (

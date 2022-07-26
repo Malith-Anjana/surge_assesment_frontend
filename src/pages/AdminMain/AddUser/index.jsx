@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { addUser } from '../../../api/api';
 import { success } from '../../../components/AlerBox';
 import FormAlert from '../../../components/Alert/FormAlert';
 import LoadingButton from '../../../components/Button/LoadingButton';
@@ -8,27 +9,34 @@ const AddUser = () => {
     const [error, setError] = useState("");
     const [loading, setloading] = useState(false);
 
-    const handleSubmit = async (e) =>{
-    setError('')
-    setloading(true)
-    e.preventDefault();
-    try {
-      const res = await AddUser(email);
-      setloading(false)
-      success(res.data.message);
-      window.location = "/";
+    const handleChange = ({ currentTarget: input }) => {
+        setError('');
+        setEmail(input.value );
+      };
 
-    } catch (error) {
-         setloading(false)
-      if (
-        error.response &&
-        error.response.status >= 400 &&
-        error.response.status <= 500
-      ) {
-        setError(error.response.data.message);
-      }
-    }
-    }
+      const handleSubmit = async (e) => {
+        const mail = {email:email}
+        setError('')
+        setloading(true)
+        e.preventDefault();
+        try {
+          const res = await addUser(mail);
+          success(res.data.message);
+          setloading(false)
+    
+          setEmail("")
+    
+        } catch (error) {
+             setloading(false)
+          if (
+            error.response &&
+            error.response.status >= 400 &&
+            error.response.status <= 500
+          ) {
+            setError(error.response.data.message);
+          }
+        }
+      };
   return (
     <div className='d-flex justify-content-center'>
     <div className='mt-5'>
@@ -40,7 +48,7 @@ const AddUser = () => {
               <input
                 type="email"
                 name="email"
-                onChange={(e)=> setEmail(e.target.value)}
+                onChange={handleChange}
                 value={email}
                 className="form-control mt-1"
                 required

@@ -43,7 +43,7 @@ export async function login(body) {
   export async function addUser(body) {
     const token = getToken();
     return axios({
-      url:BASE_URL + `/api/user`, 
+      url:BASE_URL + `/api/user/signin`, 
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

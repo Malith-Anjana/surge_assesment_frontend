@@ -21,6 +21,7 @@ const AdminMain = () => {
     <NavbarAdmin onAddUserRoute = {onAddUserRoute} onHomeRoute={onHomeRoute}/>
     {isHome && <Users/>}
     {isAddUser && <AddUser/>}
+
       </div>
   )
 }

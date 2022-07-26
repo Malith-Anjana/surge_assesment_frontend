@@ -7,7 +7,7 @@ import LoadingButton from '../Button/LoadingButton'
 
 import "./styles.css";
 
-const Modal = props => {
+const FormModal = props => {
   const [data, setData] = useState({ title: "", description: "" });
   const [error, setError] = useState("");
   const [loading, setloading] = useState(false);
@@ -93,4 +93,4 @@ const Modal = props => {
   );
 };
 
-export default Modal;
+export default FormModal;

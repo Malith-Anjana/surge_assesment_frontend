@@ -3,11 +3,14 @@ import { Link } from "react-router-dom";
 import { unsuccess } from "../../../components/AlerBox";
 import "../styles.css";
 import { getUser } from "../../../api/api";
+import ProfileModal from "../../../components/ProfileModal";
 
 const Users = () => {
   const [data, setdata] = useState([]);
+  const [item, setItem] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
   const [numOfPages, setNumOfPages] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
   const [loading, setloading] = useState(false);
   const [search, setsearch] = useState({ name: "", email: "", id: "" });
 
@@ -52,8 +55,14 @@ const Users = () => {
     getData();
   }, [pageNumber, search]);
 
+  const togglePopup = (item) => {
+    item && setItem(item);
+    setIsOpen(!isOpen);
+  }
+
   return (
     <div>
+     
       <div className="search-container">
         <form className="d-flex">
         <input
@@ -89,7 +98,7 @@ const Users = () => {
           ></input>
         </form>
       </div>
-
+      
       <div className="card-container">
         <h3>Page of {pageNumber + 1}</h3>
         <div className="row">
@@ -111,9 +120,9 @@ const Users = () => {
                         <h6 className="card-text">
                           <strong>{item.id && item.id}</strong>
                         </h6>
-                        <Link className="btn btn-outline-dark" to="#">
+                        <button className="btn btn-outline-dark" onClick={()=>togglePopup(item)}>
                           View Profile
-                        </Link>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -171,7 +180,10 @@ const Users = () => {
           </ul>
         </nav>
       </div>
+      {isOpen && <ProfileModal  handleClose={togglePopup} item={item}
+    />}
     </div>
+    
   );
 };
 

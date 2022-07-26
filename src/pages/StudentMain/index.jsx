@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import NavbarStd from "../../components/Navbars/NavbarStd";
 import { deleteNote, getNotes } from "../../api/api";
 import { unsuccess } from "../../components/AlerBox";
-import Modal from "../../components/Modal";
+import Modal from "../../components/FormModal";
 import Swal from "sweetalert2";
 
 const StudentMain = () => {
