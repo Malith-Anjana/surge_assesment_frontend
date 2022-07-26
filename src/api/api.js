@@ -59,6 +59,19 @@ export async function login(body) {
     });
   }
 
+  export async function updateNote(id, body) {
+    const token = getToken();
+    return axios({
+      url:BASE_URL + `/api/note/${id}`, 
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      data:body
+    });
+  }
+
   export async function deleteNote(id) {
     const token = getToken();
     return axios({
