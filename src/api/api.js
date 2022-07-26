@@ -21,6 +21,12 @@ export async function login(body) {
     });
   }
 
+  export async function logout() {
+    localStorage.removeItem('token');
+    return window.location = "/";
+    
+  }
+
   export async function registerUser(body) {
     const token = getToken();
     return axios({
@@ -34,10 +40,23 @@ export async function login(body) {
     });
   }
 
-  export async function getUser() {
+  export async function addUser(body) {
     const token = getToken();
     return axios({
-      url:BASE_URL + `/api/user/`, 
+      url:BASE_URL + `/api/user`, 
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      data:body
+    });
+  }
+
+  export async function getUser(query) {
+    const token = getToken();
+    return axios({
+      url:BASE_URL + `/api/user${query}`, 
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

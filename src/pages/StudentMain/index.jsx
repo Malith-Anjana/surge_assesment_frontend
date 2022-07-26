@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import NavbarStd from "../../components/Navbars/NavbarStd";
 import { deleteNote, getNotes } from "../../api/api";
-import { confirm, success, unsuccess } from "../../components/AlerBox";
+import { unsuccess } from "../../components/AlerBox";
 import Modal from "../../components/Modal";
 import Swal from "sweetalert2";
 

@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { logout } from "../../api/api";
 
-const NavbarAdmin = () => {
+const NavbarAdmin = props => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
     <div className="container-fluid">
@@ -11,16 +12,13 @@ const NavbarAdmin = () => {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item">
-          <Link className="nav-link" to="/">HOME</Link>    
+          <Link className="nav-link" to="#" onClick={props.onHomeRoute}>HOME</Link>    
           </li>
           <li className="nav-item">
-          <Link className="nav-link" to="/students">STUDENTS</Link>
-          </li>
-          <li className="nav-item">
-          <Link className="nav-link" to="/adminpannel">ADMIN PANNEL</Link>
+          <Link className="nav-link" to="#" onClick={props.onAddUserRoute}>ADD USER</Link>
           </li>
           <li className="nav-item" >
-          <Link className="nav-link" to="/logout">LOGOUT</Link>
+          <Link className="nav-link" to="#" onClick={logout}>LOGOUT</Link>
           </li>
         </ul>
       </div>
