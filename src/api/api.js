@@ -34,6 +34,18 @@ export async function login(body) {
     });
   }
 
+  export async function getUser() {
+    const token = getToken();
+    return axios({
+      url:BASE_URL + `/api/user/`, 
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  }
+
   export async function addNote(body) {
     const token = getToken();
     return axios({
